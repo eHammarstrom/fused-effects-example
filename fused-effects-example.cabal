@@ -28,6 +28,7 @@ executable mergehex
     other-modules:
         File
         FileEffect
+        LogEffect
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:

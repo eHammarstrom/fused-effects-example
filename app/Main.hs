@@ -14,9 +14,10 @@ import qualified Data.Text as T
 
 import File
 import FileEffect
+import LogEffect
 
 main :: IO ()
 main = do
     args <- getArgs
     files <- runFileEffectIO (readFiles args)
-    mapM_ printFile files
+    mapM_ (runLogEffectIO . printFile) files

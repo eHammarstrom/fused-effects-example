@@ -33,7 +33,6 @@ readFile fp = send (ReadFile fp)
 readFiles :: Has FileEffect sig m => [FilePath] -> m [File]
 readFiles = mapM readFile
 
--- TODO: error handling
 writeFile :: Has FileEffect sig m => FilePath -> T.Text -> m ()
 writeFile fp txt = send (WriteFile fp txt)
 
