@@ -16,8 +16,12 @@ import File
 import FileEffect
 import LogEffect
 
+processFile :: (Has LogEffect sig m, Has FileEffect sig m) => FilePath -> m ()
+processFile path = do
+    file <- readFile path
+    printFile file
+
 main :: IO ()
 main = do
     args <- getArgs
-    files <- runFileEffectIO (readFiles args)
-    mapM_ (runLogEffectIO . printFile) files
+    mapM_ (runFileEffectIO . runLogEffectIO . processFile) args
